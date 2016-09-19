@@ -65,7 +65,7 @@ alias files.usage.user='sudo fs_usage -e -f filesystem|grep -v CACHE_HIT|grep -v
 # -h Short size suffixes (B, K, M, G, P)
 # -p Postpend slash to folders
 alias ls='ls -G -h -p '
-alias ll='ls -l -G -h -p '
+alias ll='ls -al -G -h -p '
 
 # Restart Apache on Mac
 alias apacherestart="sudo /usr/sbin/apachectl restart"
@@ -88,3 +88,7 @@ alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
 alias port-forward-list="sudo pfctl -s nat"
 
 alias vtop="vtop --theme wizard"
+
+alias refresh='source ~/.zshrc'
+
+set -o vi
