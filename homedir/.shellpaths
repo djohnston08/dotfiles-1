@@ -6,6 +6,12 @@ export PATH=$PATH:.
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 
+# Composer
+export PATH="$HOME/.composer/vendor/bin:./vendor/bin:$PATH"
+
+# Node modules
+export PATH="./node_modules/.bin:$PATH"
+
 # GO
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
