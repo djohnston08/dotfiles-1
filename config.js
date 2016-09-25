@@ -3,6 +3,7 @@ module.exports = {
     // http://conqueringthecommandline.com/book/ack_ag
     'ack',
     'ag',
+    'cmake',
     // Install GNU core utilities (those that come with OS X are outdated)
     // Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
     'coreutils',
@@ -29,6 +30,10 @@ module.exports = {
     'moreutils',
     'nmap',
     'openconnect',
+    'php70',
+    'php70-mcrypt',
+    'php70-xdebug',
+    'php70-yaml',
     'reattach-to-user-namespace',
     // better/more recent version of screen
     'homebrew/dupes/screen',
@@ -42,25 +47,22 @@ module.exports = {
     'wget --enable-iri'
   ],
   cask: [
-    //'adium',
-    //'amazon-cloud-drive',
-    //'atom',
+    'adium',
     'box-sync',
-    //'comicbooklover',
-    //'diffmerge',
-    //'dropbox',
-    //'evernote',
+    'dropbox',
+    'google-chrome',
     'gpgtools',
-    //'ireadfast',
     'iterm2',
-    //'macvim',
+    'mysqlworkbench',
+    'phpstorm',
     'sizeup',
-    //'sketchup',
     'slack',
+    'spotify',
+    'spotify-notifications',
+    'sublime-text',
+    'teamviewer',
     'the-unarchiver',
-    //'torbrowser',
-    //'transmission',
-    //'vlc',
+    'vlc',
     'xquartz'
   ],
   gem: [
