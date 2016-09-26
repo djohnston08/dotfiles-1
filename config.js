@@ -48,7 +48,6 @@ module.exports = {
   ],
   cask: [
     'adium',
-    'box-sync',
     'dropbox',
     'google-chrome',
     'gpgtools',
