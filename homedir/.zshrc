@@ -1,13 +1,3 @@
-prompt_zsh_showStatus () {
-    state=`osascript -e 'tell application "Spotify" to player state as string'`;
-    if [ $state = "playing" ]; then
-        artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
-        track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
-
-        echo -n "$artist - $track";
-    fi
-}
-
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 # if you want to use this, change your non-ascii font to Droid Sans Mono for Awesome
@@ -47,6 +37,12 @@ source $ZSH/oh-my-zsh.sh
 source /usr/local/opt/nvm/nvm.sh
 
 source ~/.zprofile
+
+if [ -d ~/local_configs ]; then
+    for local_config in $(find ~/local_configs -type f -iname "*.zsh"); do
+        source $local_config
+    done
+fi
 
 autoload -U add-zsh-hook
 load-nvmrc() {

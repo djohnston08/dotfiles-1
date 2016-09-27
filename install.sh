@@ -25,20 +25,6 @@ if sudo grep -q "# %wheel\tALL=(ALL) NOPASSWD: ALL" "/etc/sudoers"; then
 
   # Keep-alive: update existing sudo time stamp until the script has finished
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-  bot "Do you want me to setup this machine to allow you to run sudo without a password?\nPlease read here to see what I am doing:\nhttp://wiki.summercode.com/sudo_without_a_password_in_mac_os_x \n"
-
-  read -r -p "Make sudo passwordless? [y|N] " response
-
-  if [[ $response =~ (yes|y|Y) ]];then
-      sed --version 2>&1 > /dev/null
-      sudo sed -i '' 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
-      if [[ $? == 0 ]];then
-          sudo sed -i 's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers
-      fi
-      sudo dscl . append /Groups/wheel GroupMembership $(whoami)
-      bot "You can now run sudo commands without password!"
-  fi
 fi
 
 grep 'user = GITHUBUSER' ./homedir/.gitconfig > /dev/null 2>&1
@@ -107,25 +93,6 @@ if [[ $? = 0 ]]; then
     bot "looks like you are already using gnu-sed. woot!"
     sed -i 's/GITHUBEMAIL/'$email'/' ./homedir/.gitconfig;
     sed -i 's/GITHUBUSER/'$githubuser'/' ./homedir/.gitconfig;
-  fi
-fi
-
-MD5_NEWWP=$(md5 img/wallpaper.jpg | awk '{print $4}')
-MD5_OLDWP=$(md5 /System/Library/CoreServices/DefaultDesktop.jpg | awk '{print $4}')
-if [[ "$MD5_NEWWP" != "$MD5_OLDWP" ]]; then
-  read -r -p "Do you want to use the project's custom desktop wallpaper? [Y|n] " response
-  if [[ $response =~ ^(no|n|N) ]];then
-    echo "skipping...";
-    ok
-  else
-    running "Set a custom wallpaper image"
-    # `DefaultDesktop.jpg` is already a symlink, and
-    # all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
-    rm -rf ~/Library/Application Support/Dock/desktoppicture.db
-    sudo rm -f /System/Library/CoreServices/DefaultDesktop.jpg > /dev/null 2>&1
-    sudo rm -f /Library/Desktop\ Pictures/El\ Capitan.jpg
-    sudo cp ./img/wallpaper.jpg /System/Library/CoreServices/DefaultDesktop.jpg;
-    sudo cp ./img/wallpaper.jpg /Library/Desktop\ Pictures/El\ Capitan.jpg;ok
   fi
 fi
 
@@ -220,7 +187,7 @@ popd > /dev/null 2>&1
 
 
 +bot "Installing vim plugins"
- +vim +PluginInstall +qall > /dev/null 2>&1
+vim +PluginInstall +qall
 
 bot "installing fonts"
 ./fonts/install.sh
@@ -269,6 +236,11 @@ ok
 running "cleanup homebrew"
 brew cleanup > /dev/null 2>&1
 ok
+
+bot "Setting oh-my-zsh to use our custom git plugin..."
+if [ ! -d ~/.dotfiles/oh-my-zsh/custom/plugins/git ]; then
+    cp -pR ~/.dotfiles/plugins/git ~/.dotfiles/oh-my-zsh/custom/plugins/
+fi
 
 ###############################################################################
 bot "Configuring General System UI/UX..."
@@ -905,8 +877,8 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 bot "SizeUp.app"
 ###############################################################################
 
-running "Start SizeUp at login"
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true;ok
+# running "Start SizeUp at login"
+# defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true;ok
 
 running "Don’t show the preferences window on next start"
 defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false;ok
@@ -919,9 +891,9 @@ killall cfprefsd
 bot "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)...."
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
   "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-  "iCal" "Terminal"; do
+  "iCal"; do
   killall "${app}" > /dev/null 2>&1
 done
 
 
-bot "Woot! All done. Kill this terminal and launch iTerm"
+bot "Woot! All done. Kill this terminal and launch iTerm.  You may also reboot to guarantee everything has updated."
