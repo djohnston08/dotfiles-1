@@ -48,6 +48,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/syntastic'
 Plugin 'millermedeiros/vim-esformatter'
 Plugin 'digitaltoad/vim-pug'
+" Typescript
+Plugin 'leafgarland/typescript-vim'
 " Plugin 'elzr/vim-json'
 " Plugin 'SirVer/ultisnips'
 "Plugin 'sheerun/vim-polyglot'
