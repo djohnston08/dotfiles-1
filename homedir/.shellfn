@@ -54,40 +54,12 @@ function matrix2() {
 echo -e "\e[1;40m" ; clear ; characters=$( jot -c 94 33 | tr -d '\n' ) ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) $characters ;sleep 0.05; done|gawk '{ letters=$5; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
 }
 
-# Use Mac OSX Preview to open a man page in a more handsome format
-function manp() {
-  man -t $1 | open -f -a /Applications/Preview.app
-}
-
-# Show normally hidden system and dotfile types of files
-# in Mac OSX Finder
-function showhiddenfiles() {
-  defaults write com.apple.Finder AppleShowAllFiles YES
-  osascript -e 'tell application "Finder" to quit'
-  sleep 0.25
-  osascript -e 'tell application "Finder" to activate'
-}
-
-# Hide (back to defaults) normally hidden system and dotfile types of files
-# in Mac OSX Finder
-function hidehiddenfiles() {
-  defaults write com.apple.Finder AppleShowAllFiles NO
-  osascript -e 'tell application "Finder" to quit'
-  sleep 0.25
-  osascript -e 'tell application "Finder" to activate'
-}
-
 function setproj()
 {
     echo "###############"
     echo "##  \[._.]/  ##"
     echo "###############"
     bot "Hi, this workspace is setup for the $1 project"
-}
-
-function schef()
-{
-    sudo chef-client
 }
 
 function fixperms(){
@@ -117,19 +89,5 @@ function curlhammer () {
     curl -k -s -D - $1 -o /dev/null | grep 'HTTP/1.1' | sed 's/HTTP\/1.1 //'
   done
   bot "done"
-}
-
-function dockershell () {
-  bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
-}
-
-function getSpotifySong () {
-    state=`osascript -e 'tell application "Spotify" to player state as string'`;
-    if [ $state = "playing" ]; then
-        artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
-        track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
-
-        echo -n "$artist - $track";
-    fi
 }
 
