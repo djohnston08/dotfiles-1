@@ -74,8 +74,8 @@ ok
 # ok
 
 bot "Setting oh-my-zsh to use our custom git plugin..."
-if [ ! -d ~/.dotfiles/oh-my-zsh/custom/plugins/git ]; then
-    cp -pR ~/.dotfiles/plugins/git ~/.dotfiles/oh-my-zsh/custom/plugins/
+if [ ! -d ~/projects/dotfiles/oh-my-zsh/custom/plugins/git ]; then
+    cp -pR ~/projects/dotfiles/plugins/git ~/projects/dotfiles/oh-my-zsh/custom/plugins/
 fi
 
 bot "Woot! All done. Kill this terminal and launch iTerm.  You may also reboot to guarantee everything has updated."

@@ -1,1 +1,1 @@
-/home/djohnston/projects/dotfiles-new/homedir/.vimrc
+/home/djohnston/projects/dotfiles/homedir/.vimrc
