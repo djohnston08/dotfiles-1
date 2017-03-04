@@ -7,7 +7,7 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # https://github.com/bhilburn/powerlevel9k#customizing-prompt-segments
 # https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status php_version node_version vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status php_version node_version vi_mode battery)
 # colorcode test
 # for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"
 POWERLEVEL9K_NVM_FOREGROUND='000'

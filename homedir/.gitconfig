@@ -161,9 +161,6 @@
 [diff]
   tool = vimdiff
 
-[init]
-  templatedir = ~/.dotfiles/.git_template
-
 [mergetool]
   prompt = false
   keepBackup = false
