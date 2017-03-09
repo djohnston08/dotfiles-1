@@ -48,6 +48,8 @@ alias network.externalip='curl -s http://checkip.dyndns.org/ | sed "s/[a-zA-Z<>/
 alias ls='ls -G -h -p '
 alias ll='ls -al -G -h -p '
 
+alias xc='xclip -selection c'
+
 alias refresh='source ~/.zshrc'
 
 set -o vi
