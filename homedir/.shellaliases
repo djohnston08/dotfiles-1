@@ -23,6 +23,7 @@ alias .f='cd ~/project/dotfiles'
 #################################
 # Simple Program Name Shortening
 alias g=git
+alias t2='tmux -2'
 
 
 #############################
