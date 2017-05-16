@@ -24,7 +24,7 @@ alias .f='cd ~/project/dotfiles'
 # Simple Program Name Shortening
 alias g=git
 alias t2='tmux -2'
-
+alias vim='nvim'
 
 #############################
 # Utilities
@@ -51,5 +51,8 @@ alias ll='ls -al -G -h -p '
 alias xc='xclip -selection c'
 
 alias refresh='source ~/.zshrc'
+
+# Setup alias to restart systemd-resolved
+alias vpndns='sudo service systemd-resolved restart'
 
 set -o vi

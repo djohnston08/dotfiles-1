@@ -183,7 +183,7 @@
   clean = expand -t 4
 
 [push]
-  default = matching
+	default = simple
 	followTags = true
 
 [filter "media"]

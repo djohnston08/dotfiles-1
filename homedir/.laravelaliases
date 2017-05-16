@@ -1,6 +1,6 @@
 # Aliases for Laravel
 alias arty='php artisan'
-alias cov='open storage/coverage/index.html'
+alias cov='xdg-open storage/coverage/index.html'
 alias t='phpunit'
 alias unit='phpunit tests/unit'
 alias u='phpunit tests/unit'

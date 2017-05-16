@@ -12,8 +12,5 @@ export PATH="./node_modules/.bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$(go env GOPATH)/bin
 
-# The next line updates PATH for the Google Cloud SDK.
-#source "/Users/$(whoami)/Downloads/google-cloud-sdk/path.zsh.inc"
-
-# The next line enables shell command completion for gcloud.
-#source "/Users/$(whoami)/Downloads/google-cloud-sdk/completion.zsh.inc"
+# Pip packages
+export PATH=$PATH:$HOME/.local/bin
