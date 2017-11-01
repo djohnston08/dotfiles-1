@@ -45,8 +45,8 @@ alias network.externalip='curl -s http://checkip.dyndns.org/ | sed "s/[a-zA-Z<>/
 # -l Long format
 # -h Short size suffixes (B, K, M, G, P)
 # -p Postpend slash to folders
-alias ls='ls -G -h -p '
-alias ll='ls -al -G -h -p '
+alias ls='ls -h -p '
+alias ll='ls -al -h -p '
 
 alias xc='xclip -selection c'
 
